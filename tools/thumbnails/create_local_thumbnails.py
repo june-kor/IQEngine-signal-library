@@ -46,11 +46,18 @@ def spectro_maker(directory, basename):
 
     if datatype == "cf32_le":
         samples = np.frombuffer(bytes, dtype=np.complex64)
+    elif datatype == "rf32_le" or datatype == "f32_le" or datatype == "f32":
+        samples = np.frombuffer(bytes, dtype=np.float32)
     elif datatype == "ci16_le":
         samples = np.frombuffer(bytes, dtype=np.int16)
         samples = samples[::2] + 1j * samples[1::2]
-    elif datatype == "ri16_le":
+    elif datatype == "ri16_le" or datatype == "i16_le":
         samples = np.frombuffer(bytes, dtype=np.int16)
+    elif datatype == "ci8_le" or datatype == "ci8":
+        samples = np.frombuffer(bytes, dtype=np.int8)
+        samples = samples[::2] + 1j * samples[1::2]
+    elif datatype == "ri8_le" or datatype == "i8_le" or datatype == "i8":
+        samples = np.frombuffer(bytes, dtype=np.int8)
     else:
         print("Datatype not implemented")
         samples = np.zeros(1024)
@@ -90,6 +97,13 @@ def spectro_maker(directory, basename):
     output = f"{basename}.png"
     im.save(directory + sep + output)
     # print("New image saved")
+
+    # Cleanup
+    im.close()
+    del bytes
+    del spectrogram
+    del img_buf
+    del img_byte_arr
 
 
 def file_parsing(dir, filename):
