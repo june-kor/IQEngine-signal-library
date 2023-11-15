@@ -86,7 +86,7 @@ def spectro_maker(directory, basename):
     im = Image.open(img_buf)
 
     img_byte_arr = io.BytesIO()
-    im.convert("RGB").save(img_byte_arr, format="png")
+    im.convert("RGB").save(directory + sep + basename + '.jpg', quality=95, optimize=True) # save image as jpg with options
     output = f"{basename}.png"
     im.save(directory + sep + output)
     # print("New image saved")
