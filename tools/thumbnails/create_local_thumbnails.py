@@ -14,12 +14,18 @@ num_bytes = 1000000
 offset = 0
 fftSize = 1024
 
+# Allow to work on linux as well
+if (os.name == "posix"):
+    sep = "/"
+else:
+    sep = "\\"
+
 
 def spectro_maker(directory, basename):
     metaname = basename + ".sigmf-meta"
     dataname = basename + ".sigmf-data"
-    metaFile = directory + "\\" + metaname
-    dataFile = directory + "\\" + dataname
+    metaFile = directory + sep + metaname
+    dataFile = directory + sep + dataname
 
     if (not os.path.exists(metaFile)) or (not os.path.exists(dataFile)):
         # print("Either meta or data file does not exist")
@@ -82,7 +88,7 @@ def spectro_maker(directory, basename):
     img_byte_arr = io.BytesIO()
     im.convert("RGB").save(img_byte_arr, format="png")
     output = f"{basename}.png"
-    im.save(directory + "\\" + output)
+    im.save(directory + sep + output)
     # print("New image saved")
 
 
@@ -101,7 +107,7 @@ def sub_dir_check(directory):
         f = os.path.join(directory, filename)
         # print(f)
         if os.path.isdir(f):
-            sub_dir_check(directory + "\\" + filename)
+            sub_dir_check(directory + sep + filename)
         elif os.path.isfile(f):
             file_parsing(directory, filename)
         else:
@@ -113,6 +119,6 @@ for filename in os.listdir(directory):
     f = os.path.join(directory, filename)
     # checking if it is a file
     if os.path.isdir(f):
-        sub_dir_check(directory + "\\" + filename)
+        sub_dir_check(directory + sep + filename)
     else:
         file_parsing(directory, filename)
