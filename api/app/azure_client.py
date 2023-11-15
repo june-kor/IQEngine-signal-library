@@ -90,7 +90,7 @@ class AzureBlobClient:
         )
 
     async def get_blob_content(
-        self, filepath: str, offset: Optional[int] = None, length: Optional[int] = None
+        self, filepath: str, offset: Optional[int] = 0, length: Optional[int] = None
     ) -> bytes:
         if self.account == "local":
             if '..' in filepath:
@@ -104,7 +104,7 @@ class AzureBlobClient:
         return content
 
     async def get_blob_stream(
-        self, filepath: str, offset: Optional[int] = None, length: Optional[int] = None
+        self, filepath: str, offset: Optional[int] = 0, length: Optional[int] = None
     ):
         if self.account == "local":
             if '..' in filepath:
