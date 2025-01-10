@@ -40,4 +40,6 @@ IQEngine은 빠르게 발전 중이며, 매월 업데이트와 새로운 기능,
 * 특정 기록에 대한 액세스를 제어하는 사용자/관리자 시스템
 * 새로운 웹 FFT 및 관련 함수 수행을 위한 라이브러리인 [WebFFT](https://www.npmjs.com/package/webfft)를 개발 중이며, 이를 [데모](https://webfft.com/)를 통해 테스트 가능
 
-<p align="center"><h2>IQEngine 지원:</h2></p><p align="center"><a href="https://www.qoherent.ai/"><img width=250 src="client/public/clogo-black.png" /></a></p>
+<p align="center"><img width=250 src="client/public/microsoft-logo.svg" /></p>
+
+<p align="center"><a href="https://www.qoherent.ai/"><img width=250 src="client/public/clogo-black.png" /></a></p>
